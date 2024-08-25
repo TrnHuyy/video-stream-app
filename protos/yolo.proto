@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package yolo;
+
+// The request message containing the image data to be processed.
+message Image {
+    bytes data = 1;
+}
+
+// The metadata message for additional information (optional).
+message Metadata {
+    string status = 1;
+    string message = 2;
+}
+
+// The response message containing the detected image data.
+message ImageResponse {
+    bytes data = 1;
+    Metadata metadata = 2;
+}
+
+// The YOLO service definition.
+service Yolo {
+    // Detect objects in a single frame.
+    rpc Track (Image) returns (ImageResponse);
+}

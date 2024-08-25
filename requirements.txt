@@ -1,0 +1,7 @@
+Flask
+opencv-python
+numpy
+vidgear
+grpcio
+grpcio-tools
+protobuf

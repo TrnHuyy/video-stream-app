@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    depends_on:
+      - yolo-service  # Optional: Uncomment if using a YOLO service in the same Compose file
+    environment:
+      - YOLO_API=yolo-service:50051
+
+  yolo-service:
+    image: jerapiblannett/videotracking-grpc:latest  # Replace with your YOLO service image if needed
+    ports:
+      - "50051:50051"  # gRPC port for YOLO service
